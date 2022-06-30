@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+require('dotenv').config()
 
 const MONGODB_URI =
   "mongodb+srv://alanjacob:Alanandg123@cluster0.7opvu.mongodb.net/User";
@@ -15,7 +16,7 @@ app.use(bodyParser.json());
 app.use(userRoutes);
 
 mongoose
-  .connect(MONGODB_URI)
+  .connect(process.env.MONGODB_URI)
   .then(result => {
     console.log("Connnected");
     app.listen(3000);
